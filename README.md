@@ -13,3 +13,5 @@ Some app features include:
   upload of images with the paperclip-gem
   
   utlization of the Bootstrap framework
+  
+  usage of mySQL database to store and manipulate records for users, posts and categories (subraddits).
