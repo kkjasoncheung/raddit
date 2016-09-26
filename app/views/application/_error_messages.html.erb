@@ -1,0 +1,17 @@
+<% if name && name.errors.size >0 %>
+	<div class="error_messages text-center">
+		<h2 class="text-center">
+			<%= pluralize(name.errors.size,'error') %> found
+		</h2>
+
+		<ul>
+			<% name.errors.full_messages.each do |msg| %>
+				<li>
+					<h4><%= msg %></h4>
+				</li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>
+
+<br>

@@ -1,0 +1,34 @@
+<% @page_title = "Login" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+
+	<div class="container">
+
+		<h2>Log In</h2>
+
+		<br>
+		
+		<%= form_tag(:action=>'attempt_login') do %>
+
+			<table class="table">
+					<tr>
+						<th><%= label_tag(:username) %></th>
+						<td><%= text_field_tag(:username) %></td>
+					</tr>
+					<tr>
+						<th><%= label_tag(:password) %> </th>
+						<td><%= password_field_tag(:password) %></td>
+					</tr>
+
+
+			</table>	
+			
+			<%= submit_tag('Log in', :class=>'btn btn-primary') %>
+
+		<% end %>
+		<br>
+		<%= link_to('Create a new account', {:controller=>'users',:action=>'new'}) %>
+	</div>
+</div>

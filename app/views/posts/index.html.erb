@@ -1,0 +1,15 @@
+<h2>All Posts</h2>
+
+<nav class="navbar navbar-default">
+	<div class="container">
+		<%= form_tag({:action=>'index'}, :class=>'navbar-left navbar-form', :role=>'search') do |f| %>
+			<div class="form-group">
+				<%= text_field_tag(:q) %>
+
+			</div>
+			<%= button_tag("Search", :class=>'btn btn-default') %>
+		<% end %>
+	</div>
+</nav>
+
+<%= render(:partial=>'posts', :posts=>@posts)%>

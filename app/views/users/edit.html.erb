@@ -1,0 +1,21 @@
+<% @page_title = 'Edit User' %>
+
+
+<span class="glyphicon glyphicon-chevron-left"></span><%= link_to("Back to Main Menu", {:action=>'index'}) %>
+
+<br>
+<br>
+
+<%= error_messages_for(@user) %>
+
+
+<h2>Edit Information</h2>
+	<%= form_for(:user, :url=>{:action=>'update', :id=>@user.id}) do |f| %>
+
+		<%= render(:partial=>'application/form', :locals=>{:f => f}) %>
+
+
+	<%= submit_tag("Update", :class=>'btn btn-success') %>
+
+	<% end %>
+

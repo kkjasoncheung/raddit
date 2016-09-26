@@ -1,0 +1,3 @@
+class PostsSubradditsJoin < ApplicationRecord
+
+end

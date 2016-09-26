@@ -1,0 +1,23 @@
+<% @page_title = "Popular Posts" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+
+	<div class="container">
+		<br>
+		<h2>Popular Posts</h2>
+		<br>
+		<br>
+		<table class="table">
+				<% @posts.each do |post| %>
+			<tr>	
+				<th><%= link_to(post.title, {:controller=>'posts', :action=>'show', :post_id=>post.id}) %></th>
+				<td><%= post.votes.to_s + ' votes '%> </td>
+				<td><%= post.content %></td>
+			</tr>
+			<% end %>
+
+		</table>
+	</div>
+</div>

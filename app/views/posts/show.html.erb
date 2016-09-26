@@ -1,0 +1,19 @@
+<% @page_title="#{@post.title}" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+
+	<div class="container">
+			<%= render(:partial=>'application/show_card_template', :locals=>{:post =>@post}) %>
+			<br>
+			<% if @post.user_id == session[:user_id] %>
+				<table class="row_padding">
+					<tr>
+						<td><%= button_to('Delete Post', {:action=>'delete', :id=>@post.id},:class=>'btn btn-danger') %></td>
+						<td><%= button_to('Edit Post', {:action=>'edit', :id=>@post.id}, :class=>'btn btn-success') %></td>
+					</tr>
+				</table>
+			<% end %>
+	</div>
+</div>

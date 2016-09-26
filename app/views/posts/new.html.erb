@@ -1,0 +1,24 @@
+<% @page_title="New Post" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+
+	<%= error_messages_for(@post) %>
+
+	<div class="container">
+
+		<h2>New Post</h2>
+		<div class="jumbotron">
+
+			<%= form_for(:post, :url=>{:action=>'create'}, html: {multipart: true}) do |f| %>
+				
+				<%= render(:partial=>'form', :locals=>{:f=>f}) %>
+
+				<%= submit_tag("Create Post", :class=>'btn btn-success') %>
+			<% end %>
+
+		</div>
+	</div>
+
+</div>

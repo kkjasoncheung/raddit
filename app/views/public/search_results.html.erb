@@ -1,0 +1,19 @@
+<% @page_title="Search Results" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+	<table>
+		
+	<%= results.in_groups_of(3).each do |result_group| %>
+		<div class="row">
+			<%= results_group.each do |result| %>
+				<div class="col-md-4">
+					<%= result.title %>
+				</div>
+			<% end %>
+		</div>
+	<% end %>
+
+	</table>
+</div>

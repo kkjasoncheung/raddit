@@ -1,0 +1,35 @@
+<% @page_title ='Subraddits' %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>"application/navigation") %>
+
+	<div class="container">
+	<br>
+		<h2>Subraddits</h2>
+		<br>
+		<br>		
+
+		<table class="table">
+			<% @subraddits.each do |sub| %>
+
+				<tr>
+					<th>
+						<%= sub.title %>
+					</th>
+					<td>
+					 	&nbsp;
+					</td>
+					<td>
+						<%= link_to("View Posts" , {:action=>'show', :id=>sub.id}) %>
+					</td>
+					<td>
+						<%= pluralize(sub.posts.size, 'post') %>
+					</td>
+				</tr>
+
+			<% end %>
+		</table>
+	</div>	
+
+</div>

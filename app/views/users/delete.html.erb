@@ -1,0 +1,14 @@
+<% @page_title = 'Delete User' %>
+
+<%= error_messages_for(@user) %>
+
+<span class="glyphicon glyphicon-chevron-left"></span><%= link_to('Back to Main Menu', {:action=>'index'}) %>
+<br>
+<br>
+<div class="jumbotron">
+	<h3>Are you sure you want to permanently delete '<%= @user.username %>' ?</h3>
+	<br>
+	<p>Deleting this account will remove all records from the database. </p>
+	<br>
+	<%= button_to("Delete '" +  @user.username + "'", {:action=>'destroy', :id=>@user.id}, :class=>'btn btn-danger') %>
+</div>

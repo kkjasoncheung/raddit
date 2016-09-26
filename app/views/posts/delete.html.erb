@@ -1,0 +1,21 @@
+<% @page_title="Delete Post" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+	
+	<div class="container">
+		<div class="jumbotron text-center">	
+			<h2>Are you sure you want to permanently delete : <%= @post.title %>?</h2>
+		</div>
+		
+		<table>
+			<tr class="row_padding">
+				<td><%= button_to('Yes', {:action=>'destroy', :id=>@post.id}, :class=>'btn btn-danger') %></td>
+				<td><%= button_to('No', {:controller=>'posts',:action=>'show', :post_id=>@post.id}, :class=>'btn btn-success') %></td>
+			</tr>
+		</table>
+		
+	</div>
+
+</div>

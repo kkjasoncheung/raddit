@@ -1,0 +1,16 @@
+<% @page_title = 'Create new user' %>
+
+<span class="glyphicon glyphicon-chevron-left"></span><%= link_to("Back to Main Menu", {:action=>'index'}) %>
+<br>
+<br>
+<%= error_messages_for(@user) %>
+
+<h2>New User, Welcome!</h2>
+
+<%= form_for(:user, :url=>{:controller=>'users', :action=>'create'}) do |f| %>
+	
+	<%= render(:partial=>'application/form', :locals=>{:f=>f}) %>
+		
+	<%= submit_tag('Create User', :class=>'btn btn-success') %>
+
+<% end %> 

@@ -1,0 +1,33 @@
+<% @page_title = 'Subraddit Posts' %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+
+	<div class="container">
+
+	<h2><%= @subraddit.title %> Posts</h2>
+
+		<% if @subraddit.posts.empty? %>
+
+			&nbsp;<h3> There are no posts under this subraddit. </h3>
+
+		<% end %>
+
+		<br>
+		<table class="table">
+
+			<% @subraddit.posts.each do |post| %>
+			<tr>
+				<th>
+					<%= link_to(post.title, {:controller=>'posts', :action=>'show', :post_id=>post.id}) %>
+				</th>
+				<td>
+					<%= post.content %>
+				</td>
+			</tr>
+			<% end %>
+
+		</table>
+	</div>
+</div>

@@ -1,0 +1,41 @@
+<% @page_title = "Home" %>
+
+<div class="container-fluid">
+	<br>
+	<%= render(:partial=>'application/navigation') %>
+		
+	<h2>Raddit Home  
+		<% if session[:username] %>
+			<%= ' | ' + session[:username] %>
+		<% end %>	
+	</h2>
+	<br>
+	<div class="">
+		<div class="col-md-2 new_buttons_div">
+			<h4>
+				Create Something...
+			</h4>
+			<br>
+
+			<%= button_to("New Post", {:controller=>'posts', :action=>'new'}, :class=>'btn btn-info new_button') %>
+			<br>
+			<%# button_to("New Link", '#', :class=>'btn btn-warning new_button') %>
+			<br>
+			<%# button_to("New Image", '#', :class=>'btn btn-success') %>
+			<br>
+
+		</div>
+		<div class="main_content col-md-10">
+
+			<table>
+				<% @posts.each do |post| %>
+					<tr>
+						<%= render(:partial=>'application/card_template', :locals=>{:post=>post}) %>
+					</tr>
+					<br>
+				<% end %>
+			</table>
+		</div>
+	</div>
+
+</div>

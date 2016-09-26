@@ -1,0 +1,34 @@
+<div class="card">
+	<h2><%= post.title %></h2>
+	<p class="card_content">
+		<%= post.content %></p>
+	</p>
+	<div class="img-div">
+		<% if post.image.file? %>
+			<%= image_tag(post.image.url(:large)) %>
+			<br>
+			<br>
+			<% else %>
+
+		<% end %>
+	</div>
+	<footer>
+		<p>
+			Votes: <%= post.votes %>
+		</p>
+		<h5> Submitted <%= time_ago_in_words(post.created_at) + ' ago ' %>
+			 by <%= post.user.username %> 
+			 to <%= link_to(post.subraddits.first.title, {:controller=>'subraddits',:action=>'show',:id=>post.subraddits.ids.first}) %>
+
+		</h5>
+	</footer>
+	<%# link_to('<span class="glyphicon glyphicon-thumbs-up"></span> 
+'.html_safe, {:controller=>'posts', :action=>'upvote', :id=>post.id}) %>
+	<!-- &nbsp; -->
+	<%# link_to('<span class="glyphicon glyphicon-thumbs-down"></span>
+'.html_safe, {:controller=>'posts', :action=>'downvote', :id=>post.id}) %>
+	<hr>
+	<p> <%= link_to(pluralize(post.comments.size, 'comment'), {:controller=>'posts', :action=>'show', :post_id=>post.id}) %> </p>
+
+	<%= link_to("View Post", {:controller=>'posts', :action=>'show', :post_id=>post.id}, :class=>'btn btn-primary') %>
+</div>

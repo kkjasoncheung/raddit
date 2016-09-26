@@ -1,0 +1,68 @@
+<div class="card">
+	<h2><%= post.title %></h2>
+	<p class="card_content">
+		<%= post.content %></p>
+	</p>
+	<div class="img-div">
+		<% if post.image.file? %> 
+			<%= image_tag(post.image.url(:large))  %>
+			<br>
+			<br>
+		<% else %>
+			
+		<% end %>
+	</div>
+	<footer>
+		<p>
+			Votes: <%= post.votes %>
+		</p>
+		<h5> Submitted <%= time_ago_in_words(post.created_at) + ' ago ' %>
+			 by <%= post.user.username %> 
+			 to <%= link_to(post.subraddits.first.title, {:controller=>'subraddits', :action=>'show', :id=>post.subraddits.ids.first}) %>
+
+		</h5>
+	</footer>
+	<% if session[:upvote] == nil %> 
+		<%= link_to('<span class="glyphicon glyphicon-thumbs-up"></span> 
+'.html_safe, {:controller=>'posts', :action=>'upvote_show', :id=>post.id}) %>
+	&nbsp;
+	<%=link_to('<span class="glyphicon glyphicon-thumbs-down"></span>
+'.html_safe, {:controller=>'posts', :action=>'downvote_show', :id=>post.id}) %>
+	<% end %> 
+	<% if session[:upvote] == false %>
+		<%= link_to('<span class="glyphicon glyphicon-thumbs-up"></span>'.html_safe, {:controller=>'posts', :action=>'upvote_show', :id=>post.id}) %>
+	&nbsp;
+	<% elsif session[:upvote] == true %>
+	<%= link_to('<span class="glyphicon glyphicon-thumbs-down"></span>'.html_safe, {:controller=>'posts', :action=>'downvote_show', :id=>post.id}) %>
+	<% end %>
+
+	<hr>
+	
+	<p> <%= link_to(pluralize(post.comments.size, 'comment'), {:controller=>'posts', :action=>'show', :post_id=>post.id}) %> </p>
+	<table>
+		<% post.comments.each do |comment| %>
+			<tr class="comment">
+			<% if session[:user_id] && session[:user_id] == comment.user_id %>
+				<%= link_to('<span class="glyphicon glyphicon-remove"></span>'.html_safe, {:controller=>'comments', :action=>'destroy', :id=>comment.id}) %>
+
+			<% else %>
+			<% end %>
+			&nbsp;
+			<%= comment.content + ' by ' %> 
+			<strong>
+				<%= comment.user.username %>
+			</strong>
+				
+				
+			</tr>
+			<hr>
+		<% end %>
+	</table>
+	<%= form_for(:comment, :url=>{:controller=>'comments',:action=>'create', :id=>post.id}) do |f| %>
+
+		<%= f.text_field(:content, :class=>'comment_field', :placeholder=>"Write a comment...", :autocomplete=> :off) %>
+		<br>
+		<br>
+		<%= submit_tag('Comment', :class=>'btn btn-info') %>
+	<% end %>	
+</div>
