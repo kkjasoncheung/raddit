@@ -1,4 +1,8 @@
-Raddit is a simple blogging app built using the framework Ruby on Rails. This application was meant to demonstrate and exercise my skills with the Ruby on Rails framework. 
+
+Raddit is a simple blogging app built using the framework Ruby on Rails. 
+
+This app allows users to view posts (via the front page or by subcategory) as well as register an account to create, share and edit their own posts. Users will be able to give their posts a title, content, upload an image, and categorize their post within a subcategory. Users with a registered account can also upvote and downvote on posts.
+
 
 Some app features include:
   
